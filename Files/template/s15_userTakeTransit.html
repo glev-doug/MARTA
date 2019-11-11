@@ -13,13 +13,15 @@
     <div class="wrapper">
         <h2>User Take Transit</h2>
         <form action="{{ url_for('user_take_transit') }}" method="POST">
-			<form>
+			
 				<fieldset>
 					  <p>
 						 <label>Contain Site</label>
 						 <br>
-						 <select id = "myList">
-							   <option value = "1">All</option>
+						 <select id = "myList" name="site_names">
+							{% for x in site_list %}
+							<option value="{{ x }}"{% if loop.first %} SELECTED{% endif %}>{{ x }}</option>
+							{% endfor %}
 						 </select>
 					  </p>
 				</fieldset>
@@ -27,12 +29,14 @@
 					  <p>
 						 <label>Transport Type</label>
 						 <br>
-						 <select id = "myList">
-							   <option value = "1">All</option>
+						 <select id = "myList" name="transport_types">
+						 	{% for x in transit_type_list %}
+							<option value="{{ x }}"{% if loop.first %} SELECTED{% endif %}>{{ x }}</option>
+							{% endfor %}
 						 </select>
 					  </p>
 				</fieldset>
-			</form>
+			
 			<div class="form-group">
                 <label>Min Price</label>
                 <input type="text" name="min_price" class="form-control" />
@@ -42,11 +46,14 @@
 
 				<input type="submit" class="btn btn-primary" value="Filter" name="Filter" />
 			</div>
+			<div class="table">
+				{{ take_transit_table }}
+			</div>
             <div class="form-group">
 				<label>Transit Date</label>
 				<input type="text" name="transit_date" class="form-control" />
 				<input type="submit" class="btn btn-primary" value="Log Transit" name="log_transit" />
-				<input type="submit" class="btn btn-primary" value="Back" name="back" />
+				<input type="submit" class="btn btn-primary" value="Back" name="back" formnovalidate/>
             </div>
         </form>
     </div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Edit Transit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+		label{
+     display: block;
+     height: 35px;
+     line-height: 35px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Edit Transit</h2>
+        <form action="{{ url_for('admin_edit_transit') }}" method="POST">
+			<form>
+					 <label>Route</label>
+					 <input type="text" name="start_date" class="form-control" required/>
+					 <label>Price ($)</label>
+					 <input type="text" name="end_date" class="form-control" required/>
+					 <label>Connected Sites:</label>
+					 <select multiple size="6" required>
+						 <option value="American">Placeholder 1</option>
+						 <option value="Andean">Placeholder 2</option>
+						 <option value="Chilean">Placeholder 3</option>
+						 <option value="Greater">Placeholder 4</option>
+						  <option value="James's">Placeholder 5</option>
+						  <option value="Lesser">Placeholder 6</option>
+					  </select>
+
+
+        		<div class="form-group">
+					<br>
+				<input type="submit" class="btn btn-primary" value="Back" name="back" formnovalidate/>
+				<input type="submit" class="btn btn-primary" value="Update" name="update" />
+            	</div>
+        </form>
+    </div>
+</body>
+</html>

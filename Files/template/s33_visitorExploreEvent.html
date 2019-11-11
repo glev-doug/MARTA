@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore Event</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Site Report</h2>
+        <form action="{{ url_for('visitor_explore_event') }}" method="POST">
+
+				<label>Name</label>
+				<input type="text" name="name" class="form-control" />
+				<label>Description</label>
+				<input type="text" name="description" class="form-control" />
+
+				<p>
+				   <label>Site Name</label>
+				   <br>
+				   <select id = "site" name='site_names'>
+					   {% for x in site_list %}
+					   <option value="{{ x }}"{% if loop.first %} SELECTED{% endif %}>{{ x }}</option>
+					   {% endfor %}
+				   </select>
+				</p>
+				<label>Start Date</label>
+				<input type="text" name="start_date" class="form-control" />
+				<label>End Date</label>
+				<input type="text" name="end_date" class="form-control" />
+
+				   <label>Total Visits Min</label>
+				   <input type="text" name="total_visits_min" class="form-control" />
+				   <label>Total Visits Max</label>
+				  <input type="text" name="total_visits_max" class="form-control" />
+
+				  <label>Ticket Price Min</label>
+				  <input type="text" name="total_revenue_min" class="form-control" />
+				  <label>Ticket Price Max</label>
+				 <input type="text" name="total_revenue_max" class="form-control" />
+
+				 <input type="checkbox" id="include_visited" name="checkbox" checked>
+ 				<label for="include_visited">Include Visited</label>
+				<input type="checkbox" id="include_soldout_events" name="checkbox" checked>
+			   <label for="include_soldout_events">Include Sold Out Events</label>
+
+				<div class="form-group">
+					<br><input type="submit" class="btn btn-primary" value="Filter" name="filter" />
+					<input type="submit" class="btn btn-primary" value="Daily Detail" name="daily_detail" />
+				</div>
+        		<div class="form-group">
+				<input type="submit" class="btn btn-primary" value="Back" name="back" formnovalidate/>
+            	</div>
+        </form>
+    </div>
+</body>
+</html>

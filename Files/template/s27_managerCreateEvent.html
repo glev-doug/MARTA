@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager Create Event</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+		label{
+	 display: block;
+	 height: 35px;
+	 line-height: 35px;
+}
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Create Event</h2>
+        <form action="{{ url_for('manager_create_event') }}" method="POST">
+
+			<form>
+				 <label>Name</label>
+				<input type="text" name="name" class="form-control" required/>
+			</form>
+			<form>
+				<label>Price ($)</label>
+			   <input type="text" name="price" class="form-control" required/>
+			   <label>Capacity</label>
+			   <input type="text" name="capacity" class="form-control" required/>
+			   <label>Min Staff Required</label>
+			   <input type="text" name="min_staff" class="form-control" required/>
+		   </form>
+		   <form>
+			   <label>Start Date</label>
+			  <input type="text" name="start_date" class="form-control" required/>
+			  <label>End Date</label>
+			  <input type="text" name="end_date" class="form-control" required/>
+		  </form>
+		  <label>Description</label>
+		  <input type="text" name="description" class="form-control" required/>
+
+
+
+			<label>Assign Staff</label>
+		   <select multiple size="6" required>
+
+			   <option value="p1">Placeholder 1</option>
+			   <option value="p2">Placeholder 2</option>
+			   <option value="p3">Placeholder 3</option>
+			   <option value="p4">Placeholder 4</option>
+				<option value="p5">Placeholder 5</option>
+				<option value="p6">Placeholder 6</option>
+			</select>
+		</form>
+		<form>
+			<br>
+			   <input type="submit" class="btn btn-primary" value="Back" name="back" formnovalidate/>
+			   <input type="submit" class="btn btn-primary" value="Create" name="create" />
+
+        </form>
+    </div>
+</body>
+</html>

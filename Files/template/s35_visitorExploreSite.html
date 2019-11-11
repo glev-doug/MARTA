@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visitor Explore Site</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Explore Site</h2>
+        <form action="{{ url_for('visitor_explore_site') }}" method="POST">
+				<div class="form-group">
+					<p>
+						 <label>Name</label>
+						 <br>
+						 <select id = "name" name='site_names'>
+							 {% for x in site_list %}
+ 							<option value="{{ x }}"{% if loop.first %} SELECTED{% endif %}>{{ x }}</option>
+ 							{% endfor %}
+						 </select>
+			   		 </p>
+			   		 <p>
+						 <label>Open Everyday</label>
+						 <br>
+					 	<select id = "open_everyday">
+						   <option value = "all">ALL</option>
+						   <option value = "yes">Yes</option>
+						   <option value = "no">No</option>
+						 </select>
+					</p>
+				</div>
+
+				<div class="form-group">
+					 <label>Start Date</label>
+					 <input type="text" name="start_date" class="form-control" />
+					 <label>End Date</label>
+					 <input type="text" name="end_date" class="form-control" />
+				</div>
+
+				<div class="form-group">
+					 <label>Total Visits Min</label>
+				   	 <input type="text" name="total_visits_min" class="form-control" />
+				     <label>Total Visits Max</label>
+				     <input type="text" name="total_visits_max" class="form-control" />
+					 <label>Event Count Min</label>
+					 <input type="text" name="event_count_min" class="form-control" />
+					 <label>Event Count Max</label>
+					 <input type="text" name="event_count_max" class="form-control" />
+				</div>
+
+				<div class="form-group">
+					<br><br><input type="checkbox" id="include_visited" name="checkbox" checked>
+					<label for="include_visited">Include Visited</label>
+				</div>
+
+				<div class="form-group">
+					<br><input type="submit" class="btn btn-primary" value="Filter" name="filter" />
+					<input type="submit" class="btn btn-primary" value="Site Detail" name="site_detail" />
+					<input type="submit" class="btn btn-primary" value="Transit Detail" name="transit_detail" />
+				</div>
+        		<div class="form-group">
+				<input type="submit" class="btn btn-primary" value="Back" name="back" formnovalidate/>
+            	</div>
+        </form>
+    </div>
+</body>
+</html>
